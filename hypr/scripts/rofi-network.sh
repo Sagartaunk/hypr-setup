@@ -1,0 +1,1 @@
+/home/sagar/.config/hypr-dotfiles/scripts/rofi-network.sh

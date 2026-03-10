@@ -1,0 +1,1 @@
+/home/sagar/.config/hypr-dotfiles/waybar/scripts/power-profile.sh
