@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # =============================================================================
 #  Hyprland Dotfiles Installer
-#  https://github.com/YOUR_USERNAME/YOUR_REPO
+#  
 #
 #  Usage:
 #    ./install.sh           — full install
