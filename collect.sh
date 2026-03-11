@@ -82,6 +82,9 @@ collect_file "$HOME/.gtkrc-2.0"         "shell/.gtkrc-2.0"
 # ─── Shell rc ─────────────────────────────────────────────────────────────────
 collect_file "$HOME/.zshrc"             "shell/.zshrc"
 collect_file "$HOME/.bashrc"            "shell/.bashrc"
+
+# ─── Greetd ───────────────────────────────────────────────────────────────────
+collect "/etc/greetd"                   greetd
 collect_file "$HOME/.bash_profile"      "shell/.bash_profile"
 
 # ─── Fish (if used) ───────────────────────────────────────────────────────────
