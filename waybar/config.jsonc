@@ -55,8 +55,6 @@
         "format-disconnected": "  Offline",
         "format-linked":       "  No IP",
         "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ipaddr}",
-        "on-click":       "nm-connection-editor",
-        "on-click-right": "~/.config/waybar/scripts/rofi-network.sh",
         "interval": 5
     },
     "bluetooth": {
