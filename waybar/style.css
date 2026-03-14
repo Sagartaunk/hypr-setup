@@ -1,100 +1,197 @@
+/* ── Oxocarbon-inspired Waybar ── */
+
+@define-color base     #161616;
+@define-color surface  #262626;
+@define-color overlay  #393939;
+@define-color muted    #525252;
+@define-color subtle   #6f6f6f;
+@define-color text     #f2f4f8;
+@define-color love     #ee5396;
+@define-color gold     #42be65;
+@define-color rose     #33b1ff;
+@define-color pine     #be95ff;
+@define-color foam     #3ddbd9;
+
 * {
     border: none;
     border-radius: 0;
-    font-family: "Ubuntu Nerd Font";
-    font-size: 13px;
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 12px;
     min-height: 0;
 }
 
 window#waybar {
     background: transparent;
-    color: white;
+    color: @text;
 }
 
-#window {
-    font-weight: bold;
-    font-family: "Ubuntu";
+/* ── Left pill ── */
+.modules-left {
+    background: @base;
+    border-radius: 12px;
+    padding: 0 4px;
+    margin: 2px 0;
 }
-/*
+
+/* ── Center pill ── */
+.modules-center {
+    background: @base;
+    border-radius: 12px;
+    padding: 0 14px;
+    margin: 2px 0;
+}
+
+/* ── Right pill ── */
+.modules-right {
+    background: @base;
+    border-radius: 12px;
+    padding: 0 4px;
+    margin: 2px 0;
+}
+
+/* ── Workspaces ── */
 #workspaces {
-    padding: 0 5px;
+    padding: 0 4px;
 }
-*/
 
 #workspaces button {
-    padding: 0 5px;
+    padding: 0 7px;
+    color: @muted;
     background: transparent;
-    color: white;
-    border-top: 2px solid transparent;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    margin: 4px 1px;
 }
 
-#workspaces button.focused {
-    color: #c9545d;
-    border-top: 2px solid #c9545d;
+#workspaces button:hover {
+    color: @text;
+    background: @overlay;
 }
 
-#mode {
-    background: #64727D;
-    border-bottom: 3px solid white;
-}
-
-#clock, #battery, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #tray, #mode , #custom-powerprofile {
-    padding: 0 3px;
-    margin: 0 2px;
-}
-
-#clock {
+#workspaces button.active {
+    color: @rose;
+    background: @surface;
     font-weight: bold;
 }
 
-#battery {
+#workspaces button.urgent {
+    color: @love;
+    background: @surface;
 }
 
-#battery icon {
-    color: red;
+/* ── Window title ── */
+#window {
+    color: @subtle;
+    padding: 0 10px 0 4px;
+    font-size: 11px;
 }
 
-#battery.charging {
+/* ── Clock ── */
+#clock {
+    color: @text;
+    font-weight: bold;
+    padding: 0 4px;
 }
 
-@keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: black;
-    }
+/* ── Shared module padding ── */
+#custom-power-profile,
+#network,
+#bluetooth,
+#pulseaudio,
+#pulseaudio.microphone,
+#backlight,
+#battery,
+#tray {
+    padding: 0 10px;
+    color: @text;
 }
 
-#battery.warning:not(.charging) {
-    color: white;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+/* ── Power profile ── */
+#custom-power-profile {
+    color: @love;
 }
 
-#cpu {
+#custom-power-profile.performance {
+    color: @love;
 }
 
-#memory {
+#custom-power-profile.balanced {
+    color: @gold;
 }
 
+#custom-power-profile.power-saver {
+    color: @foam;
+}
+
+/* ── Network ── */
 #network {
+    color: @foam;
 }
 
 #network.disconnected {
-    background: #f53c3c;
+    color: @muted;
 }
 
+/* ── Bluetooth ── */
+#bluetooth {
+    color: @pine;
+}
+
+#bluetooth.disabled {
+    color: @muted;
+}
+
+/* ── Audio ── */
 #pulseaudio {
+    color: @rose;
 }
 
 #pulseaudio.muted {
+    color: @muted;
 }
 
-#custom-spotify {
-    color: rgb(102, 220, 105);
+#pulseaudio.microphone {
+    color: @pine;
 }
 
+/* ── Backlight ── */
+#backlight {
+    color: @gold;
+}
+
+/* ── Battery ── */
+#battery {
+    color: @gold;
+}
+
+#battery.charging {
+    color: @gold;
+}
+
+#battery.warning:not(.charging) {
+    color: #ff832b;
+}
+
+#battery.critical:not(.charging) {
+    color: @love;
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    to { opacity: 0; }
+}
+
+/* ── Tray ── */
 #tray {
+    padding: 0 8px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: @love;
+    border-radius: 8px;
 }

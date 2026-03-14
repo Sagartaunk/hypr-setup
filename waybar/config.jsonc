@@ -1,1 +1,112 @@
-/home/sagar/.config/hypr-dotfiles/waybar/config.jsonc
+{
+    "layer": "top",
+    "position": "top",
+    "height": 36,
+    "spacing": 0,
+    "margin-top": 6,
+    "margin-left": 10,
+    "margin-right": 10,
+    "reload_style_on_change": true,
+    "modules-left": [
+        "hyprland/workspaces",
+        "hyprland/window"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "custom/power-profile",
+        "network",
+        "bluetooth",
+        "pulseaudio",
+        "pulseaudio#microphone",
+        "backlight",
+        "battery",
+        "tray"
+    ],
+    "hyprland/workspaces": {
+        "format": "{name}",
+        "on-scroll-up":   "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1",
+        "sort-by-number": true,
+        "persistent-workspaces": {
+            "*": [1, 2, 3, 4, 5]
+        }
+    },
+    "hyprland/window": {
+        "format": "  {}",
+        "max-length": 40,
+        "separate-outputs": true
+    },
+    "clock": {
+        "format": "  {:%H:%M}",
+        "format-alt": "  {:%A, %B %d %Y}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>"
+    },
+    "custom/power-profile": {
+        "exec": "~/.config/waybar/scripts/power-profile.sh",
+        "interval": 5,
+        "return-type": "json",
+        "on-click": "~/.config/waybar/scripts/power-profile.sh toggle"
+    },
+    "network": {
+        "format-wifi":         "  {essid}",
+        "format-ethernet":     "  {ipaddr}",
+        "format-disconnected": "  Offline",
+        "format-linked":       "  No IP",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ipaddr}",
+        "on-click":       "nm-connection-editor",
+        "on-click-right": "~/.config/waybar/scripts/rofi-network.sh",
+        "interval": 5
+    },
+    "bluetooth": {
+        "format":           "󰂯",
+        "format-connected": "󰂱  {device_alias}",
+        "format-disabled":  "󰂲",
+        "on-click": "blueman-manager"
+    },
+    "pulseaudio": {
+        "format":       "{icon}  {volume}%",
+        "format-muted": "󰝟  Muted",
+        "format-icons": {
+            "headphone": "󰋋",
+            "headset":   "󰋎",
+            "default":   ["󰕿", "󰖀", "󰕾"]
+        },
+        "on-click":       "~/.config/waybar/scripts/audio-switcher.sh",
+        "on-click-right": "pwvucontrol",
+        "on-scroll-up":   "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 2%+",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-"
+    },
+    "pulseaudio#microphone": {
+        "format":              "{format_source}",
+        "format-source":       "󰍬  {volume}%",
+        "format-source-muted": "󰍭  Muted",
+        "on-click":       "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+        "on-scroll-up":   "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 2%+",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 2%-"
+    },
+    "backlight": {
+        "format": "{icon}  {percent}%",
+        "format-icons": ["󰃞", "󰃟", "󰃠"],
+        "on-scroll-up":   "brightnessctl set 2%+",
+        "on-scroll-down": "brightnessctl set 2%-",
+        "tooltip": false
+    },
+    "battery": {
+        "states": {
+            "good":     95,
+            "warning":  30,
+            "critical": 15
+        },
+        "format":          "{icon}  {capacity}%",
+        "format-charging": "󰂄  {capacity}%",
+        "format-plugged":  "󰚥  {capacity}%",
+        "format-alt":      "{icon}  {time}",
+        "format-icons":    ["󰁺","󰁻","󰁼","󰁽","󰁾","󰁿","󰂀","󰂁","󰂂","󰁹"]
+    },
+    "tray": {
+        "icon-size": 16,
+        "spacing": 8
+    }
+}
