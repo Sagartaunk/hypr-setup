@@ -1,38 +1,36 @@
 #!/bin/bash
+# TLP power profile module for Waybar
 
-# Single script for Waybar power profile module
-# No args = output JSON status for Waybar
-# "toggle" arg = cycle to next profile on click
-
-CURRENT=$(powerprofilesctl get)
+GOVERNOR=$(cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor 2>/dev/null || echo "unknown")
 
 if [[ "$1" == "toggle" ]]; then
-    case "$CURRENT" in
-        "performance") NEXT="balanced" ;;
-        "balanced")    NEXT="power-saver" ;;
-        "power-saver") NEXT="performance" ;;
-        *)             NEXT="balanced" ;;
+    case "$GOVERNOR" in
+        "performance")
+            sudo /usr/bin/tlp bat > /dev/null 2>&1
+            notify-send "Power Profile" "Switched to power-saver" --icon=battery-symbolic -t 2000
+            ;;
+        *)
+            sudo /usr/bin/tlp ac > /dev/null 2>&1
+            notify-send "Power Profile" "Switched to performance" --icon=battery-symbolic -t 2000
+            ;;
     esac
-    powerprofilesctl set "$NEXT"
-    notify-send "Power Profile" "Switched to $NEXT" --icon=battery-symbolic -t 2000
 else
-    case "$CURRENT" in
+    case "$GOVERNOR" in
         "performance")
             ICON="󱐌"
+            LABEL="performance"
             CLASS="performance"
             ;;
-        "balanced")
-            ICON="󰗑"
-            CLASS="balanced"
-            ;;
-        "power-saver")
+        "powersave")
             ICON="󰌪"
+            LABEL="power-saver"
             CLASS="power-saver"
             ;;
         *)
-            ICON="?"
-            CLASS="unknown"
+            ICON="󰗑"
+            LABEL="$GOVERNOR"
+            CLASS="balanced"
             ;;
     esac
-    echo "{\"text\": \"$ICON $CURRENT\", \"tooltip\": \"Click to cycle profile\", \"class\": \"$CLASS\"}"
+    echo "{\"text\": \"$ICON $LABEL\", \"tooltip\": \"CPU Governor: $GOVERNOR — Click to toggle\", \"class\": \"$CLASS\"}"
 fi
