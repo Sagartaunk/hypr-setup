@@ -16,7 +16,7 @@ My Arch Linux + Hyprland setup. One command to restore everything on a new machi
 | Audio | Pipewire + Wireplumber |
 | Lockscreen | hyprlock |
 | Idle | hypridle |
-| File manager | Thunar |
+| File manager |Nemo|
 | Bluetooth | bluez + blueman |
 
 ## Fresh Install
