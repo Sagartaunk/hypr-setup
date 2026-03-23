@@ -306,9 +306,9 @@ post_install() {
   header "GTK / Icon Theme"
 
   # Apply GTK theme settings (edit these to match your actual theme names)
-  GTK_THEME="Your-GTK-Theme-Name"       # ← change this
-  ICON_THEME="Your-Icon-Theme-Name"     # ← change this
-  CURSOR_THEME="Your-Cursor-Theme"      # ← change this
+  GTK_THEME="catppuccin-macchiato-teal-standard+default"       # ← change this
+  ICON_THEME="BeautySolar"     # ← change this
+  CURSOR_THEME="default"      # ← change this
 
   if command -v gsettings &>/dev/null; then
     gsettings set org.gnome.desktop.interface gtk-theme       "$GTK_THEME"   2>/dev/null || true
