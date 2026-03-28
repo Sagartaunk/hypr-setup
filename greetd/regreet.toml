@@ -1,0 +1,13 @@
+[background]
+path = "/etc/greetd/wallpaper.jpg"
+fit = "Cover"   # Fill | Contain | Cover | ScaleDown
+
+[GTK]
+application_prefer_dark_theme = true
+font_name = "JetBrainsMonoNL Nerd Font Propo Medium 10"
+# cursor_theme_name = "default"
+# icon_theme_name = "BeautySolar"
+
+[commands]
+reboot = ["systemctl", "reboot"]
+poweroff = ["systemctl", "poweroff"]

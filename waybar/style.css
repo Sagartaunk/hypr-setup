@@ -96,6 +96,7 @@ window#waybar {
 /* ── Shared module padding ── */
 #custom-power-profile,
 #network,
+#custom-idle-inhibit,
 #bluetooth,
 #pulseaudio,
 #pulseaudio.microphone,
@@ -194,4 +195,11 @@ window#waybar {
     -gtk-icon-effect: highlight;
     background-color: @love;
     border-radius: 8px;
+}
+/* ── Idle inhibit ── */
+#custom-idle-inhibit {
+    color: @muted;
+}
+#custom-idle-inhibit.active {
+    color: @love;
 }

@@ -9,7 +9,8 @@
     "reload_style_on_change": true,
     "modules-left": [
         "hyprland/workspaces",
-        "hyprland/window"
+        "hyprland/window",
+	"custom/idle-inhibit"
     ],
     "modules-center": [
         "clock"
@@ -106,5 +107,11 @@
     "tray": {
         "icon-size": 16,
         "spacing": 8
+    },
+    "custom/idle-inhibit": {
+    "exec": "~/.config/waybar/scripts/idle-inhibit.sh",
+    "interval": 3,
+    "return-type": "json",
+    "on-click": "~/.config/waybar/scripts/idle-inhibit.sh toggle"
     }
 }

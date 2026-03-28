@@ -20,7 +20,7 @@ info() { echo -e "${CYAN}[→]${RESET} $*"; }
 warn() { echo -e "${YELLOW}[!]${RESET} $*"; }
 
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-DOTS="$REPO_DIR/dotfiles"
+DOTS="$REPO_DIR"
 
 # ─── Helper: copy a dir into dotfiles/ ───────────────────────────────────────
 collect() {
