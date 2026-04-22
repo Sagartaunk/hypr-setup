@@ -12,7 +12,7 @@ My Arch Linux + Hyprland setup. One command to restore everything on a new machi
 | Launcher | Rofi (Wayland) |
 | Notifications | Dunst |
 | Login manager | SDDM |
-| Wallpaper | swww |
+| Wallpaper | hyprpaper |
 | Audio | Pipewire + Wireplumber |
 | Lockscreen | hyprlock |
 | Idle | hypridle |
