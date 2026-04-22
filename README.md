@@ -1,3 +1,6 @@
+# Note : The Install script as well as the readme are AI generated use at your own risk 
+# This is not a project , it's just a backup for my current setup 
+
 # 🌿 Hyprland Dotfiles
 
 My Arch Linux + Hyprland setup. One command to restore everything on a new machine.
